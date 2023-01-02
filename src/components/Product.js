@@ -12,7 +12,7 @@ const Product = ({ product }) => {
         Authorization: `Bearer ${state.userInfo.token}`,
       },
     }
-    await fetch(`/api/products/${id}`, config)
+    await fetch(`https://gulkazapi.onrender.com/api/products/${id}`, config)
   }
 
   // const showImages = product.images.map((image) => image.slice(15))

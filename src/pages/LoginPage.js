@@ -1,60 +1,63 @@
-import React, { useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import UserContext from "../context/UserContext";
+import React, { useContext, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import UserContext from '../context/UserContext'
 
 const LoginPage = () => {
-  const navigate = useNavigate();
-  const { state, dispatch } = useContext(UserContext);
+  const navigate = useNavigate()
+  const { state, dispatch } = useContext(UserContext)
 
   const [data, setData] = useState({
-    email: "",
-    password: "",
-  });
+    email: '',
+    password: '',
+  })
 
   const handleInputChange = (event) => {
     setData({
       ...data,
       [event.target.name]: event.target.value,
-    });
-  };
+    })
+  }
 
   const handleFormSubmit = async (event) => {
-    event.preventDefault();
+    event.preventDefault()
 
     dispatch({
-      type: "LOGIN_START",
-    });
+      type: 'LOGIN_START',
+    })
 
     const config = {
-      method: "POST",
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify({
         email: data.email,
         password: data.password,
       }),
-    };
+    }
 
     try {
-      const response = await fetch("/api/users/login", config);
+      const response = await fetch(
+        'https://gulkazapi.onrender.com/api/users/login',
+        config,
+      )
       if (response.status >= 400 && response.status < 600) {
-        console.log(response);
-        throw new Error(response.statusText);
+        console.log(response)
+        throw new Error(response.statusText)
       }
-      const jsonData = await response.json();
-      localStorage.setItem("userInfo", JSON.stringify(jsonData));
+      const jsonData = await response.json()
+      localStorage.setItem('userInfo', JSON.stringify(jsonData))
       dispatch({
-        type: "LOGIN_SUCCESS",
+        type: 'LOGIN_SUCCESS',
         payload: jsonData,
-      });
-      navigate("/");
+      })
+      navigate('/')
     } catch (error) {
-      console.log("error here", error);
+      console.log('error here', error)
       dispatch({
-        type: "LOGIN_FAIL",
+        type: 'LOGIN_FAIL',
         payload: error.message,
-      });
+      })
     }
 
     // await fetch('/api/users//login', config)
@@ -82,12 +85,12 @@ const LoginPage = () => {
     //   .finally(() => {
     //     console.log('finally')
     //   })
-  };
+  }
 
   return (
     <div className="LoginPage">
       <h1>Login Page</h1>
-      {state?.loading ? "Loading..." : null}
+      {state?.loading ? 'Loading...' : null}
       <form onSubmit={handleFormSubmit}>
         <div className="input-container">
           <label htmlFor="email">Email</label>
@@ -116,7 +119,7 @@ const LoginPage = () => {
         <button>Login</button>
       </form>
     </div>
-  );
-};
+  )
+}
 
-export default LoginPage;
+export default LoginPage

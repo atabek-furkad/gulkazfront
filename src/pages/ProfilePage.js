@@ -11,7 +11,9 @@ const ProfilePage = () => {
     const fetchProducts = async () => {
       setLoading(true)
       try {
-        const response = await fetch('/api/products')
+        const response = await fetch(
+          'https://gulkazapi.onrender.com/api/products',
+        )
         if (response.status >= 400 && response.status < 600) {
           console.log(response)
           throw new Error(response.statusText)

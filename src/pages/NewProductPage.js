@@ -54,7 +54,11 @@ const NewProductPage = () => {
       },
     }
 
-    const { data } = await axios.post('/api/products', formData, config)
+    const { data } = await axios.post(
+      'https://gulkazapi.onrender.com/api/products',
+      formData,
+      config,
+    )
 
     console.log('data', data)
 

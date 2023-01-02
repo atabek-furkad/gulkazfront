@@ -18,7 +18,10 @@ const ProductPage = () => {
           Authorization: `Bearer ${state.userInfo.token}`,
         },
       }
-      const { data } = await axios.get(`/api/products/${params.id}`, config)
+      const { data } = await axios.get(
+        `https://gulkazapi.onrender.comproducts/${params.id}`,
+        config,
+      )
       await setImagePath(data)
       console.log('Data', imagePath)
     }

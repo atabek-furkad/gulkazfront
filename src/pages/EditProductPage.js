@@ -21,7 +21,9 @@ const EditProductPage = () => {
   useEffect(() => {
     const fetchData = async (id) => {
       try {
-        const response = await fetch(`/api/products/${id}`)
+        const response = await fetch(
+          `https://gulkazapi.onrender.com/api/products/${id}`,
+        )
         const {
           name,
           description,
@@ -70,7 +72,7 @@ const EditProductPage = () => {
     }
 
     const { data } = await axios.put(
-      `/api/products/${params.id}`,
+      `https://gulkazapi.onrender.com/api/products/${params.id}`,
       formData,
       config,
     )
