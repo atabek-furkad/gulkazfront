@@ -178,7 +178,11 @@ const EditProductPage = () => {
           imagesPath.map((element, index) => {
             return (
               <div key={index}>
-                <img src={`/${element.fileName}`} width="100" alt="product" />
+                <img
+                  src={`https://gulkazapi.onrender.com/uploads/${element.fileName}`}
+                  width="100"
+                  alt="product"
+                />
                 <p>{element.originalname}</p>
               </div>
             )
