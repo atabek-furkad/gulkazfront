@@ -25,7 +25,7 @@ const App = () => {
             <Route element={<HomePage />} path="/" />
 
             <Route
-              path="/profile"
+              path="profile"
               element={
                 <Protected>
                   <ProfilePage />
@@ -33,7 +33,7 @@ const App = () => {
               }
             />
             <Route
-              path="/profile/new-product"
+              path="profile/new-product"
               element={
                 <Protected>
                   <NewProductPage />
@@ -41,16 +41,16 @@ const App = () => {
               }
             />
             <Route
-              path="/profile/edit-product/:id"
+              path="profile/edit-product/:id"
               element={
                 <Protected>
                   <EditProductPage />
                 </Protected>
               }
             />
-            <Route element={<ProductPage />} path="/products/:id" />
-            <Route element={<LoginPage />} path="/login" />
-            <Route element={<ErrorPage />} path="/*" />
+            <Route element={<ProductPage />} path="products/:id" />
+            <Route element={<LoginPage />} path="login" />
+            <Route element={<ErrorPage />} path="*" />
           </Routes>
           <Footer />
         </Router>
