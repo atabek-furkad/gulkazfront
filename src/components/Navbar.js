@@ -18,6 +18,10 @@ const Navbar = () => {
         <img src="/images/logo.png" width="50" alt="" />
       </Link>
 
+      <Link className="link" to={`/profile`}>
+        Profile
+      </Link>
+
       {state?.userInfo ? (
         <Link onClick={handleLogout} className="link" to={`/`}>
           Logout
